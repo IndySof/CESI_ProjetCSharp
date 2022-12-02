@@ -1,0 +1,34 @@
+title Sequence 1.0. Add, Lauch and Remove Backup:
+
+
+actor user #purple
+
+participant View #lightblue
+
+participant Model #lightpink
+
+
+user<--View: 1.1 Ask Action
+activate user #purple
+user->View: 1.2 Choose, Add Backup work
+deactivate user
+
+View->Model:1.2.1: Backup number check
+activate View #lightblue
+activate Model #lightpink
+Model<-Model:1.2.1.1: Read Backup Works
+deactivate Model
+View<--Model:1.2.2: Display confirmation message
+deactivate View
+user<--View: 2.1 Ask BackUp work properties
+activate user #purple
+user->View: 2.2 Input backup properties
+deactivate user
+activate View #lightblue
+View<-View :2.2.1 Check properties
+View->Model:2.2.2: Add Backup
+activate Model #lightpink
+Model<-Model:2.2.2.1: Create Backup Work
+deactivate Model
+View<--Model:2.2.3: Display confirmation message
+deactivate View

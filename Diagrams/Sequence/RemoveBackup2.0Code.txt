@@ -1,0 +1,28 @@
+title Sequence 2.0. Remove Backup:
+
+
+actor user #purple
+
+participant EasySave #lightblue
+
+participant External Memory #lightpink
+
+
+user<--EasySave: 1.1 Dispaly Menu
+activate user #purple
+user->EasySave: 1.2 Choose, remove Backup Work
+deactivate user
+EasySave->External Memory: 1.2.1 Edit State File
+activate External Memory #lightpink
+External Memory-->EasySave:Display Backup Work List
+deactivate External Memory
+
+user<--EasySave: 2.1 Ask BackUp work name
+activate user #purple
+user->EasySave: 2.2 select backup work name
+deactivate user
+activate EasySave #lightblue
+
+EasySave->External Memory:2.2.2: Edit State file
+EasySave<--External Memory:2.2.3: Display confirmation message
+deactivate EasySave

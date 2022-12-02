@@ -1,0 +1,44 @@
+title Sequence 2.0. Lauch Backup:
+
+
+actor user #purple
+
+participant EasySave #lightblue
+
+participant External_Memory #lightpink
+
+participant CryptoSoft #yellow
+
+
+user<--EasySave: 1.1 Dispaly Menu
+activate user #purple
+user->EasySave: 1.2 Choose, Add Backup Work
+deactivate user
+
+
+EasySave->External_Memory: 1.2.1:Ask State File
+activate External_Memory #lightpink
+EasySave<--External_Memory: Display Backup Work List
+deactivate External_Memory
+
+user<--EasySave: 2.1 Ask BackUp work Name
+activate user #purple
+user->EasySave: 2.2 Input backup work name
+deactivate user
+activate EasySave #lightblue
+EasySave<-EasySave :2.2.1 Check encryption properties
+alt if(Encryption== true)
+EasySave->External_Memory:2.2.2:copy files
+activate External_Memory #lightpink
+EasySave<--External_Memory:2.2.2.1:display Confirmation Message
+deactivate External_Memory
+else else
+EasySave->CryptoSoft:2.2.3: Encrypt Files
+activate CryptoSoft #yellow
+CryptoSoft-->External_Memory:2.2.2.2:display Time Encryption
+deactivate CryptoSoft
+activate External_Memory #lightpink
+External_Memory-->EasySave:2.2.2.3:Display confirmation message 
+deactivate External_Memory
+end
+deactivate EasySave

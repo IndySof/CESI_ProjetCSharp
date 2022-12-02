@@ -1,0 +1,22 @@
+title Sequence 1.0. Show Backup:
+
+
+actor user #purple
+
+participant View #lightblue
+
+participant Model #lightpink
+
+
+user<--View: 1.1 Ask Action
+activate user #purple
+user->View: 1.2 Choose, Show Backup works
+deactivate user
+
+View->Model:1.2.1: Request Backup works
+activate View #lightblue
+activate Model #lightpink
+Model<-Model:1.2.1.1: Read Backup Works
+deactivate Model
+View<--Model:1.2.2: Display confirmation message
+deactivate View
